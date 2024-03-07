@@ -33,10 +33,9 @@ export async function POST(req: NextRequest) {
         await onStart(senderId);
         break;
       case 'random':
-        const randNum = parseInt(args);
+        let randNum = parseInt(args);
         if (isNaN(randNum)) {
-          await sendMessage(senderId, 'Invalid number');
-          break;
+          randNum = 5;
         }
         await onRandom(senderId, randNum);
         break;
