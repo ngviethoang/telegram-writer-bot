@@ -24,9 +24,9 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ```md
 start - Start a new page
-random - Generate some random words for creative writing
-suggest - Suggest new ideas for current page
+random - Random words
+suggest - Suggest new ideas
 word - Explain meaning of a word
-find - Find the suitable words for an idea
+find - Find the suitable words
 page - Get current page URL
 ```

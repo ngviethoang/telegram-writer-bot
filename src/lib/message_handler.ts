@@ -39,7 +39,7 @@ export const onSuggest = async (senderId: string) => {
     await sendMessage(senderId, 'No content found.');
     return;
   }
-  const prompt = `Give me some short suggestions for the content: ${currentPageContent}`;
+  const prompt = `Based on this content that I am writing, give me a question or a comment to suggest me to continue writing: ${currentPageContent}`;
   const response = await askAi(prompt);
 
   if (!response) {
@@ -66,6 +66,10 @@ export const onCurrentPage = async (senderId: string) => {
 };
 
 export const onAskingWord = async (senderId: string, word: string) => {
+  if (!word) {
+    await sendMessage(senderId, 'Please provide a word.');
+    return;
+  }
   const prompt = `What is the meaning of ${word}? Give me some examples.`;
   const response = await askAi(prompt);
 
@@ -77,7 +81,11 @@ export const onAskingWord = async (senderId: string, word: string) => {
 };
 
 export const onFindingWord = async (senderId: string, content: string) => {
-  const prompt = `Help me find some words that have similar meaning as: ${content}?`;
+  if (!content) {
+    await sendMessage(senderId, 'Please provide a word.');
+    return;
+  }
+  const prompt = `Help me find some words that have similar meaning as: ${content}`;
   const response = await askAi(prompt);
 
   if (!response) {
